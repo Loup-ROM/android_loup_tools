@@ -3,12 +3,12 @@
 # if you want to build without using ccache, comment
 # the next 4 lines
 export USE_CCACHE=1
-export CCACHE_DIR=~/.ccache
+export CCACHE_DIR="$WORKSPACE/.ccache"
 export CCACHE_MAX_SIZE=50G
 ccache -M $CCACHE_MAX_SIZE
 
 # set max jack-vm size
-export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4g"
+export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx6g"
 #export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -Xmx4096m"
 
 # encapsulate the build's temp directory.
@@ -20,13 +20,13 @@ TEMP=$TMP
 export TMP TMPDIR TEMP
 
 #make sure jack-server is restarted in TMP
-prebuilts/sdk/tools/jack-admin kill-server
+$WORKSPACE/prebuilts/sdk/tools/jack-admin kill-server
 
 # we want all compiler messages in English
 export LANGUAGE=C
 
 # set up the environment (variables and functions)
-source build/envsetup.sh
+source $WORKSPACE/build/envsetup.sh
 
 # clean the out dir; comment out, if you want to do
 # a dirty build
