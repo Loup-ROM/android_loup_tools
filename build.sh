@@ -7,10 +7,6 @@ export CCACHE_DIR="$WORKSPACE/.ccache"
 export CCACHE_MAX_SIZE=50G
 ccache -M $CCACHE_MAX_SIZE
 
-# set max jack-vm size
-export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx6g"
-#export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -Xmx4096m"
-
 # encapsulate the build's temp directory.
 # This way it's easier to clean up afterwards
 TMP=$(mktemp -dt)
@@ -21,6 +17,13 @@ export TMP TMPDIR TEMP
 
 #make sure jack-server is restarted in TMP
 $WORKSPACE/prebuilts/sdk/tools/jack-admin kill-server
+
+# set max jack-vm size
+export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx6g"
+#export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -Xmx4096m"
+
+# start jack with new vars
+$WORKSPACE/prebuilts/sdk/tools/jack-admin start-server
 
 # we want all compiler messages in English
 export LANGUAGE=C
