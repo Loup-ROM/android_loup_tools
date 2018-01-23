@@ -18,6 +18,9 @@ export TMP TMPDIR TEMP
 #make sure jack-server is restarted in TMP
 $WORKSPACE/prebuilts/sdk/tools/jack-admin kill-server
 
+# fix USER: unbound variable
+export USER=$(whoami)
+
 # set max jack-vm size
 export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx6g"
 #export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -Xmx4096m"
