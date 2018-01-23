@@ -38,7 +38,7 @@ source $WORKSPACE/build/envsetup.sh
 # fire up the building process and also log stdout
 # and stderrout
 breakfast santoni 2>&1 | tee breakfast.log && \
-brunch santoni 2>&1 | tee make.log
+mka bacon 2>&1 | tee make.log
 
 # remove all temp directories
 rm -r ${TMP}
