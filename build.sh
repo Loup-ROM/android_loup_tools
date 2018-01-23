@@ -37,7 +37,7 @@ source $WORKSPACE/build/envsetup.sh
 
 # fire up the building process and also log stdout
 # and stderrout
-lunch santoni 2>&1 | tee breakfast.log && \
+lunch aosp_santoni-eng 2>&1 | tee breakfast.log && \
 make -j6 2>&1 | tee make.log
 
 # remove all temp directories
