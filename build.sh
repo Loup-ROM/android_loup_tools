@@ -35,8 +35,7 @@ export LANGUAGE=C
 source $WORKSPACE/build/envsetup.sh
 
 # export Loup kernel config
-# one of these flags result in a "no thermal sensor found" error
-#export KBUILD_LOUP_CFLAGS="-Wno-misleading-indentation -Wno-bool-compare -mtune=cortex-a53 -march=armv8-a+crc+simd+crypto -mcpu=cortex-a53 -O2"
+export KBUILD_LOUP_CFLAGS="-Wno-misleading-indentation -Wno-bool-compare -mtune=cortex-a53 -march=armv8-a+crc+simd+crypto -mcpu=cortex-a53 -O2"
 # clean the out dir; comment out, if you want to do
 # a dirty build
 #make -j9 ARCH=arm clean
