@@ -23,7 +23,7 @@ export $XDL_DIR = $JNI_DIR/xdelta3-3.0.7
 
 # Create delta updates dir structure (if doesn't exists yet)
 if [ ! -d "$OLD_DIR" ]; then
-  mkdir -p $OLD_DIR &&  mkdir -p CRR_DIR
+  mkdir -p $OLD_DIR &&  mkdir -p $CRR_DIR
 fi
 
 # Remove old file (if exists)
@@ -39,7 +39,6 @@ if [ -f $CRR_DIR/*.zip ]; then
 fi
 
 echo "Moving your latest build to delta/current folder"
-rm $CRR_DIR/*
 mv $LOS_DIR/lineage-*.zip $CRR_DIR/.
 
 if [[ $CREATE_DELTA -eq 1 ]]; then
