@@ -13,13 +13,13 @@
 #       |- XDL_DIR :      Xdelta source dir             #
 # ===================================================== #
 
-export $LOS_DIR=$WORKSPACE/out/target/product/$1
-export $DLT_DIR=$WORKSPACE/deltas
-export $OLD_DIR=$DLT_DIR/old/$1
-export $CRR_DIR=$DLT_DIR/current/$1
-export $DEP_DIR=$DLT_DIR/deps
-export $JNI_DIR=$DLT_DIR/jni
-export $XDL_DIR=$JNI_DIR/xdelta3-3.0.7
+export LOS_DIR=$WORKSPACE/out/target/product/$1
+export DLT_DIR=$WORKSPACE/deltas
+export OLD_DIR=$DLT_DIR/old/$1
+export CRR_DIR=$DLT_DIR/current/$1
+export DEP_DIR=$DLT_DIR/deps
+export JNI_DIR=$DLT_DIR/jni
+export XDL_DIR=$JNI_DIR/xdelta3-3.0.7
 
 # Create delta updates dir structure (if doesn't exists yet)
 if [ ! -d "$OLD_DIR" ]; then
