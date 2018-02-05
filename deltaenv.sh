@@ -28,14 +28,14 @@ fi
 
 # Remove old file (if exists)
 if [ -f $OLD_DIR/*.zip ]; then
-  rm $OLD_DIR/*.zip
-  # Tell the script we're able to create a delta update
-  $CREATE_DELTA = 1;
+  rm $OLD_DIR/*.zip  
 fi
 
 if [ -f $CRR_DIR/*.zip ]; then    
     echo "Moving your previous build to old folder."
     mv $CRR_DIR/lineage-*.zip $OLD_DIR/.  
+    # Tell the script we're able to create a delta update
+    $CREATE_DELTA = 1;
 fi
 
 echo "Moving your latest build to delta/current folder"
