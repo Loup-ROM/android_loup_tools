@@ -63,7 +63,7 @@ if [[ $CREATE_DELTA -eq 1 ]]; then
     cp -rfv $WORKSPACE/packages/apps/OpenDelta/server/* $DLT_DIR/.
   fi   
   echo "Creating delta update..."
-  ./opendelta.sh $1
+  .$DLT_DIR/opendelta.sh $1
 else
   echo "This is your first build!, I can't create any delta until your next build."  
 fi
