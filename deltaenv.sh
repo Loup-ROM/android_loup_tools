@@ -13,7 +13,7 @@
 #       |- XDL_DIR :  Xdelta source dir             #
 # ================================================= #
 
-$LOS_DIR = $WORKSPACE/out/target/product/santoni
+$LOS_DIR = $WORKSPACE/out/target/product/$1
 $DLT_DIR = $WORKSPACE/deltas
 $OLD_DIR = $DLT_DIR/old
 $CRR_DIR = $DLT_DIR/current
