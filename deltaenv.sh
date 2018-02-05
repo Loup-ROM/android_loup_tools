@@ -3,20 +3,20 @@
 # Create delta updates using OpenDelta (https://github.com/omnirom/android_packages_apps_OpenDelta) guidelines. 
 # Author: bitrvmpd (e.noyer.silva@gmail.com)
 
-# ============ Vars/Dir Structure ================= #
-# - LOS_DIR :         LineageOS output directory    #
-# - DLT_DIR :         Deltas root dir               #
-#   |- OLD_DIR :      Previous LOS output zip.      #
-#   |- CRR_DIR :      Current LOS output zip.       #
-#   |- DEP_DIR :      Dependencies dir              #
-#     |- JNI_DIR :    zipadjust source dir          #
-#       |- XDL_DIR :  Xdelta source dir             #
-# ================================================= #
+# ============ Vars/Dir Structure ===================== #
+# - LOS_DIR :             LineageOS output directory    #
+# - DLT_DIR :             Deltas root dir               #
+#   |- OLD_DIR/$DEVICE :  Previous LOS output zip.      #
+#   |- CRR_DIR/$DEVICE :  Current LOS output zip.       #
+#   |- DEP_DIR :          Dependencies dir              #
+#     |- JNI_DIR :        zipadjust source dir          #
+#       |- XDL_DIR :      Xdelta source dir             #
+# ===================================================== #
 
 export $LOS_DIR = $WORKSPACE/out/target/product/$1
 export $DLT_DIR = $WORKSPACE/deltas
-export $OLD_DIR = $DLT_DIR/old
-export $CRR_DIR = $DLT_DIR/current
+export $OLD_DIR = $DLT_DIR/old/$1
+export $CRR_DIR = $DLT_DIR/current/$1
 export $DEP_DIR = $DLT_DIR/deps
 export $JNI_DIR = $DLT_DIR/jni
 export $XDL_DIR = $JNI_DIR/xdelta3-3.0.7
