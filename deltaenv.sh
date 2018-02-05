@@ -35,7 +35,7 @@ if [ -f $CRR_DIR/*.zip ]; then
     echo "Moving your previous build to old folder."
     mv $CRR_DIR/lineage-*.zip $OLD_DIR/.  
     # Tell the script we're able to create a delta update
-    CREATE_DELTA = 1
+    CREATE_DELTA=1
 fi
 
 echo "Moving your latest build to delta/current folder"
