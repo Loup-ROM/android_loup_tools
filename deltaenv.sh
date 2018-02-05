@@ -13,8 +13,8 @@
 #       |- XDL_DIR :  Xdelta source dir             #
 # ================================================= #
 
-$LOS_DIR = $WORKINGDIR/out/target/product/santoni
-$DLT_DIR = $WORKINGDIR/deltas
+$LOS_DIR = $WORKSPACE/out/target/product/santoni
+$DLT_DIR = $WORKSPACE/deltas
 $OLD_DIR = $DLT_DIR/old
 $CRR_DIR = $DLT_DIR/current
 $DEP_DIR = $DLT_DIR/deps
@@ -46,7 +46,7 @@ if [[ $CREATE_DELTA -eq 1 ]]; then
   # Check if jni dir exists, if not, copy it and compile dependencies
   if [ ! -d "$JNI_DIR" ]; then
     echo "First time building a delta, copying dependencies..."
-    cp -rfv $WORKINGDIR/packages/apps/OpenDelta/jni $DLT_DIR/.
+    cp -rfv $WORKSPACE/packages/apps/OpenDelta/jni $DLT_DIR/.
     echo "Compiling dependencies..."
     
     echo "> Compiling xdelta3..."
@@ -61,7 +61,7 @@ if [[ $CREATE_DELTA -eq 1 ]]; then
     gcc -o dedelta xdelta3-3.0.7/xdelta3.c delta.c delta_run.c
     
     # Copy Omni's delta build script.
-    cp -rfv $WORKINGDIR/packages/apps/OpenDelta/server/* $DLT_DIR/.
+    cp -rfv $WORKSPACE/packages/apps/OpenDelta/server/* $DLT_DIR/.
   fi   
   echo "Creating delta update..."
   ./opendelta.sh
