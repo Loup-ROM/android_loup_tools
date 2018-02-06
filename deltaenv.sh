@@ -6,7 +6,7 @@
 # ============ Vars/Dir Structure ===================== #
 # - LOS_DIR :             LineageOS output directory    #
 # - DLT_DIR :             Deltas root dir               #
-#   |- OLD_DIR/$DEVICE :  Previous LOS output zip.      #
+#   |- LST_DIR/$DEVICE :  Last (newer) LOS output zip.  #
 #   |- CRR_DIR/$DEVICE :  Current LOS output zip.       #
 #   |- DEP_DIR :          Dependencies dir              #
 #     |- JNI_DIR :        zipadjust source dir          #
