@@ -15,31 +15,31 @@
 
 export LOS_DIR=$WORKSPACE/out/target/product/$1
 export DLT_DIR=$WORKSPACE/deltas
-export OLD_DIR=$DLT_DIR/old/$1
+export LST_DIR=$DLT_DIR/last/$1
 export CRR_DIR=$DLT_DIR/current/$1
 export DEP_DIR=$DLT_DIR/deps
 export JNI_DIR=$DLT_DIR/jni
 export XDL_DIR=$JNI_DIR/xdelta3-3.0.7
 
 # Create delta updates dir structure (if doesn't exists yet)
-if [ ! -d "$OLD_DIR" ]; then
-  mkdir -p $OLD_DIR &&  mkdir -p $CRR_DIR
+if [ ! -d "$CRR_DIR" ]; then
+  mkdir -p $CRR_DIR &&  mkdir -p $LST_DIR
 fi
 
 # Remove old file (if exists)
-if [ -f $OLD_DIR/*.zip ]; then
-  rm $OLD_DIR/*.zip  
+if [ -f $CRR_DIR/*.zip ]; then
+  rm $CRR_DIR/*.zip  
 fi
 
-if [ -f $CRR_DIR/*.zip ]; then    
+if [ -f $LST_DIR/*.zip ]; then    
     echo "Moving your previous build to old folder."
-    mv $CRR_DIR/lineage-*.zip $OLD_DIR/.  
+    mv $LST_DIR/lineage-*.zip $CRR_DIR/.  
     # Tell the script we're able to create a delta update
     CREATE_DELTA=1
 fi
 
-echo "Moving your latest build to delta/current folder"
-mv $LOS_DIR/lineage-*.zip $CRR_DIR/.
+echo "Moving your latest build to delta/last folder"
+mv $LOS_DIR/lineage-*.zip $LST_DIR/.
 
 if [[ $CREATE_DELTA -eq 1 ]]; then
   # If jni dir exists, remove it to get latest sources
