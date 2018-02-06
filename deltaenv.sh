@@ -42,26 +42,28 @@ echo "Moving your latest build to delta/current folder"
 mv $LOS_DIR/lineage-*.zip $CRR_DIR/.
 
 if [[ $CREATE_DELTA -eq 1 ]]; then
-  # Check if jni dir exists, if not, copy it and compile dependencies
-  if [ ! -d "$JNI_DIR" ]; then
-    echo "First time building a delta, copying dependencies..."
-    cp -rfv $WORKSPACE/packages/apps/OpenDelta/jni $DLT_DIR/.
-    echo "Compiling dependencies..."
+  # If jni dir exists, remove it to get latest sources
+  if [ -d "$JNI_DIR" ]; then
+    rm -rfv $JNI_DIR
+  fi  
+  echo "First time building a delta, copying dependencies..."
+  cp -rfv $WORKSPACE/packages/apps/OpenDelta/jni $DLT_DIR/.
+  echo "Compiling dependencies..."
     
-    echo "> Compiling xdelta3..."
-    cd $XDL_DIR
-    ./configure && make
+  echo "> Compiling xdelta3..."
+  cd $XDL_DIR
+  ./configure && make
     
-    echo "> Compiling zipadjust..."
-    cd $JNI_DIR
-    gcc -o zipadjust zipadjust.c zipadjust_run.c -lz
+  echo "> Compiling zipadjust..."
+  cd $JNI_DIR
+  gcc -o zipadjust zipadjust.c zipadjust_run.c -lz
     
-    echo "> Compiling dedelta..."
-    gcc -o dedelta xdelta3-3.0.7/xdelta3.c delta.c delta_run.c
+  echo "> Compiling dedelta..."
+  gcc -o dedelta xdelta3-3.0.7/xdelta3.c delta.c delta_run.c
     
-    # Copy Omni's delta build script.
-    cp -rfv $WORKSPACE/packages/apps/OpenDelta/server/* $DLT_DIR/.
-  fi   
+  # Copy Omni's delta build script.
+  cp -rfv $WORKSPACE/packages/apps/OpenDelta/server/* $DLT_DIR/.
+  
   echo "Creating delta update..."
   .$DLT_DIR/opendelta.sh $1
 else
@@ -69,4 +71,4 @@ else
 fi
 
 # Make sure LOS output directory is empty for the next build.
-rm -rfv $LOS_DIR/lineage-*.zip
+rm -rfv "$LOS_DIR"/lineage-*.zip
