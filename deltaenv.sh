@@ -55,6 +55,8 @@ if [[ $CREATE_DELTA -eq 1 ]]; then
   fi  
   echo "Copying dependencies..."
   cp -rfv $WORKSPACE/packages/apps/OpenDelta/jni $DLT_DIR/.
+  # Remove Android.mk inside JNI_DIR to avoid build errors.
+  rm $JNI_DIR/Android.mk
   echo "Compiling dependencies..."
     
   echo "> Compiling xdelta3..."
