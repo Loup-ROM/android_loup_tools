@@ -6,12 +6,19 @@
 # ============ Vars/Dir Structure ===================== #
 # - LOS_DIR :             LineageOS output directory    #
 # - DLT_DIR :             Deltas root dir               #
-#   |- LST_DIR/$DEVICE :  Last (newer) LOS output zip.  #
+#   |- LST_DIR/$DEVICE :  Last LOS output zip.          #
 #   |- CRR_DIR/$DEVICE :  Current LOS output zip.       #
 #   |- DEP_DIR :          Dependencies dir              #
 #     |- JNI_DIR :        zipadjust source dir          #
 #       |- XDL_DIR :      Xdelta source dir             #
 # ===================================================== #
+
+# Note:
+# The delta update will have the name of the Last LOS build, but the content of the new one (Current).
+# Because that way:
+# 1. Download Current Name delta
+# 2. Download/Apply your delta
+# 3. Now you have the recent version!
 
 export LOS_DIR=$WORKSPACE/out/target/product/$1
 export DLT_DIR=$WORKSPACE/deltas
@@ -22,24 +29,24 @@ export JNI_DIR=$DLT_DIR/jni
 export XDL_DIR=$JNI_DIR/xdelta3-3.0.7
 
 # Create delta updates dir structure (if doesn't exists yet)
-if [ ! -d "$CRR_DIR" ]; then
-  mkdir -p $CRR_DIR &&  mkdir -p $LST_DIR
+if [ ! -d "$LST_DIR" ]; then
+  mkdir -p $LST_DIR &&  mkdir -p $CRR_DIR
 fi
 
-# Remove old file (if exists)
-if [ -f $CRR_DIR/*.zip ]; then
-  rm $CRR_DIR/*.zip  
+# Remove oldest build (if exists)
+if [ -f $LST_DIR/*.zip ]; then
+  rm $LST_DIR/*.zip  
 fi
 
-if [ -f $LST_DIR/*.zip ]; then    
-    echo "Moving your previous build to old folder."
-    mv $LST_DIR/lineage-*.zip $CRR_DIR/.  
+if [ -f $CRR_DIR/*.zip ]; then    
+    echo "Moving your previous build to $LST_DIR folder"
+    mv $CRR_DIR/lineage-*.zip $LST_DIR/.  
     # Tell the script we're able to create a delta update
     CREATE_DELTA=1
 fi
 
-echo "Moving your latest build to delta/last folder"
-mv $LOS_DIR/lineage-*.zip $LST_DIR/.
+echo "Moving your latest build to $CRR_DIR folder"
+mv $LOS_DIR/lineage-*.zip $CRR_DIR/.
 
 if [[ $CREATE_DELTA -eq 1 ]]; then
   # If jni dir exists, remove it to get latest sources
