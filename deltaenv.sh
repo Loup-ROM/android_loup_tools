@@ -46,7 +46,7 @@ if [[ $CREATE_DELTA -eq 1 ]]; then
   if [ -d "$JNI_DIR" ]; then
     rm -rfv $JNI_DIR
   fi  
-  echo "First time building a delta, copying dependencies..."
+  echo "Copying dependencies..."
   cp -rfv $WORKSPACE/packages/apps/OpenDelta/jni $DLT_DIR/.
   echo "Compiling dependencies..."
     
