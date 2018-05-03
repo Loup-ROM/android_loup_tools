@@ -43,7 +43,7 @@ export KBUILD_LOUP_CFLAGS="-Wno-misleading-indentation -Wno-bool-compare -mtune=
 # fire up the building process and also log stdout
 # and stderrout
 #breakfast lineage_santoni-user 2>&1 | tee breakfast.log && \
-brunch lineage_santoni-user 2>&1 | tee make.log
+brunch lineage_santoni-userdebug 2>&1 | tee make.log
 
 # remove all temp directories
 rm -r ${TMP}
