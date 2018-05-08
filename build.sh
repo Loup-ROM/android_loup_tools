@@ -35,7 +35,7 @@ export LANGUAGE=C
 source $WORKSPACE/build/envsetup.sh
 
 # export Loup kernel config
-export KBUILD_LOUP_CFLAGS="-Wno-misleading-indentation -Wno-bool-compare -mtune=cortex-a53 -march=armv8-a+crc+simd+crypto -mcpu=cortex-a53 -O2"
+export KBUILD_LOUP_CFLAGS="-Wno-unknown-warning-option -Wno-sometimes-uninitialized -Wno-vectorizer-no-neon -Wno-pointer-sign -Wno-sometimes-uninitialized -Wno-tautological-constant-out-of-range-compare -mtune=cortex-a53 -march=armv8-a+crc+simd+crypto -mcpu=cortex-a53 -O2"
 # clean the out dir; comment out, if you want to do
 # a dirty build
 #make -j9 ARCH=arm clean
