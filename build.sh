@@ -40,10 +40,8 @@ export KBUILD_LOUP_CFLAGS="-Wno-misleading-indentation -Wno-bool-compare -mtune=
 # a dirty build
 #make -j9 ARCH=arm clean
 
-# fire up the building process and also log stdout
-# and stderrout
-#breakfast lineage_santoni-user 2>&1 | tee breakfast.log && \
-brunch lineage_santoni-user 2>&1 | tee make.log
-
+# fire up the building process
+lunch aosp_santoni-userdebug 
+make -j6 otapackage
 # remove all temp directories
 rm -r ${TMP}
