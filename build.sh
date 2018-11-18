@@ -35,7 +35,14 @@ export LANGUAGE=C
 source $WORKSPACE/build/envsetup.sh
 
 # export Loup kernel config
-export KBUILD_LOUP_CFLAGS="-Wno-misleading-indentation -Wno-bool-compare -mtune=cortex-a53 -march=armv8-a+crc+simd+crypto -mcpu=cortex-a53 -O2"
+if [[ "$1" == *"santoni"* ]]
+then
+        export KBUILD_LOUP_CFLAGS="-Wno-misleading-indentation -Wno-bool-compare -mtune=cortex-a53 -march=armv8-a+crc+simd+crypto -mcpu=cortex-a53 -O2"
+fi
+if [[ "$1" == *"ether"* ]]
+then
+        export KBUILD_LOUP_CFLAGS="-Wno-misleading-indentation -Wno-bool-compare -mtune=cortex-a57.cortex-a53 -march=armv8-a+crc+simd+crypto -mcpu=cortex-a57.cortex-a53 -O2"
+fi
 # clean the out dir; comment out, if you want to do
 # a dirty build
 #make -j9 ARCH=arm clean
@@ -43,7 +50,7 @@ export KBUILD_LOUP_CFLAGS="-Wno-misleading-indentation -Wno-bool-compare -mtune=
 # fire up the building process and also log stdout
 # and stderrout
 #breakfast lineage_santoni-user 2>&1 | tee breakfast.log && \
-brunch lineage_santoni-user 2>&1 | tee make.log
+brunch lineage_$1-user 2>&1 | tee make.log
 
 # remove all temp directories
 rm -r ${TMP}
