@@ -50,7 +50,8 @@ fi
 # fire up the building process and also log stdout
 # and stderrout
 #breakfast lineage_santoni-user 2>&1 | tee breakfast.log && \
-brunch lineage_$1-user 2>&1 | tee make.log
+# brunch lineage_$1-user 2>&1 | tee make.log
+breakfast lineage_$1-user && make -j8 bacon 2>&1 | tee make.log
 
 # remove all temp directories
 rm -r ${TMP}
