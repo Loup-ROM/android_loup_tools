@@ -51,7 +51,7 @@ breakfast santoni 2>&1 | tee breakfast.log && \
 # Fix for WSL
 make bison && make ijar
 export BISON_EXEC="$WORKSPACE/out/host/linux-x86/bin/bison"
-export IJAR_EXEC="$WORKSPACE/lineage/out/host/linux-x86/bin/ijar"
+export IJAR_EXEC="$WORKSPACE/out/host/linux-x86/bin/ijar"
 
 brunch santoni 2>&1 | tee make.log
 
