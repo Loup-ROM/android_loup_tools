@@ -1,5 +1,9 @@
 #!/bin/bash
 
+export WORKSPACE=$(pwd)
+
+source build/envsetup.sh && repopick -t wsl-compile
+
 # if you want to build without using ccache, comment
 # the next 4 lines
 export USE_CCACHE=1
@@ -42,8 +46,14 @@ export KBUILD_LOUP_CFLAGS="-Wno-unknown-warning-option -Wno-sometimes-uninitiali
 
 # fire up the building process and also log stdout
 # and stderrout
-#breakfast lineage_santoni-user 2>&1 | tee breakfast.log && \
-brunch lineage_santoni-user 2>&1 | tee make.log
+breakfast santoni 2>&1 | tee breakfast.log && \
+
+# Fix for WSL
+make bison && make ijar
+export BISON_EXEC="$WORKSPACE/out/host/linux-x86/bin/bison"
+export IJAR_EXEC="$WORKSPACE/lineage/out/host/linux-x86/bin/ijar"
+
+brunch santoni 2>&1 | tee make.log
 
 # remove all temp directories
 rm -r ${TMP}
