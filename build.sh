@@ -22,7 +22,7 @@ $WORKSPACE/prebuilts/sdk/tools/jack-admin kill-server
 export USER=$(whoami)
 
 # set max jack-vm size
-export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx3762m"
+export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx2048m"
 #export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -Xmx4096m"
 
 # start jack with new vars
@@ -51,7 +51,7 @@ fi
 # and stderrout
 #breakfast lineage_santoni-user 2>&1 | tee breakfast.log && \
 # brunch lineage_$1-user 2>&1 | tee make.log
-breakfast lineage_$1-user && make -j8 bacon 2>&1 | tee make.log
+breakfast lineage_$1-user && make -j2 bacon 2>&1 | tee make.log
 
 # remove all temp directories
 rm -r ${TMP}
