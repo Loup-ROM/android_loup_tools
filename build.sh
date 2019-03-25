@@ -22,7 +22,7 @@ $WORKSPACE/prebuilts/sdk/tools/jack-admin kill-server
 export USER=$(whoami)
 
 # set max jack-vm size
-export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx2048m"
+export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx2100m"
 #export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -Xmx4096m"
 
 # start jack with new vars
