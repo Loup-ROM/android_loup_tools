@@ -4,7 +4,7 @@
 # the next 4 lines
 export USE_CCACHE=1
 export CCACHE_DIR="$WORKSPACE/.ccache"
-export CCACHE_MAX_SIZE=50G
+export CCACHE_MAX_SIZE=2G
 ccache -M $CCACHE_MAX_SIZE
 
 # encapsulate the build's temp directory.
