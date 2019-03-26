@@ -6,8 +6,8 @@ chmod +x loup/tools/build.sh
 loup/tools/build.sh santoni $1
 
 # Upload our new build
-sshpass -p "$LOBO" scp -o "StrictHostKeyChecking no" '$WORKSPACE/out/target/product/$1/lineage-*.zip.md5sum' $SF:$PROJECT/LOS141
-sshpass -p "$LOBO" scp -o "StrictHostKeyChecking no" '$WORKSPACE/out/target/product/$1/lineage-*.zip' $SF:$PROJECT/LOS141
+sshpass -p "$sfpass" scp -o "StrictHostKeyChecking no" '$WORKSPACE/out/target/product/$1/lineage-*.zip.md5sum' $sfusername:$sfproject/LOS141
+sshpass -p "$sfpass" scp -o "StrictHostKeyChecking no" '$WORKSPACE/out/target/product/$1/lineage-*.zip' $sfusername:$sfproject/LOS141
 
 # Create delta
 
