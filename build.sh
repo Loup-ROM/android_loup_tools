@@ -4,7 +4,7 @@
 # the next 4 lines
 export USE_CCACHE=1
 export CCACHE_DIR="$WORKSPACE/.ccache"
-export CCACHE_MAX_SIZE=2G
+export CCACHE_MAX_SIZE=5G
 ccache -M $CCACHE_MAX_SIZE
 
 # encapsulate the build's temp directory.
@@ -22,7 +22,7 @@ $WORKSPACE/prebuilts/sdk/tools/jack-admin kill-server
 export USER=$(whoami)
 
 # set max jack-vm size
-export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx2100m"
+export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4096m"
 #export JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -Xmx4096m"
 
 # start jack with new vars
