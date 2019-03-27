@@ -51,7 +51,7 @@ fi
 # and stderrout
 #breakfast lineage_santoni-user 2>&1 | tee breakfast.log && \
 # brunch lineage_$1-user 2>&1 | tee make.log
-breakfast lineage_$1-user && make -j2 bacon 2>&1 | tee make.log
+breakfast lineage_$1-user && make -j5 bacon 2>&1 | tee make.log
 
 # remove all temp directories
 rm -r ${TMP}
