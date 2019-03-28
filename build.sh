@@ -51,7 +51,13 @@ fi
 # and stderrout
 #breakfast lineage_santoni-user 2>&1 | tee breakfast.log && \
 # brunch lineage_$1-user 2>&1 | tee make.log
-breakfast lineage_$1-user && make -j5 bacon 2>&1 | tee make.log
+breakfast lineage_$1-user && make -j5 bacon 
 
-# remove all temp directories
-rm -r ${TMP}
+if [ $? -eq 0 ]
+then
+  # remove all temp directories
+  rm -r ${TMP}
+else
+  echo -e "\033[0;31m> Compilation failed, exiting...\033[0;0m\n"
+  exit 1
+fi
