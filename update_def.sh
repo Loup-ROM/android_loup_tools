@@ -6,7 +6,7 @@ cd android_loup_ota
 
 export TIMESTAMP=$(date -d $(cut -d'-' -f3 <<< $LATEST) +%s)
 jq ".[\"./$DEVICE\"] +=[{ \"filename\" : \"$LATEST\" , \"timestamp\" : $TIMESTAMP }]" devices.json > tmp.json
-
+cat tmp.json #debug
 mv tmp.json devices.json
 
 git config --global user.email "e.noyer.silva@gmail.com"
