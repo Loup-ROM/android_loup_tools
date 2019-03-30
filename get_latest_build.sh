@@ -4,8 +4,8 @@ git clone "https://$ghuser:$ghpass@github.com/$ghuser/android_loup_ota.git" -b o
 cd android_loup_ota
 
 DEVICE=$1
-LATEST=$(jq '.["./'$DEVICE'"] | .[-1] | .["filename"]' devices.json)
-export LATEST=$(echo "${LATEST//\"}")
+export LATEST=$(jq '.["./'$DEVICE'"] | .[-1] | .["filename"]' devices.json)
+# export LATEST=$(echo "${LATEST//\"}")
 cd -
 
 # Create delta folder structure
