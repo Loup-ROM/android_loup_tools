@@ -4,6 +4,7 @@ git clone "https://$ghuser:$ghpass@github.com/$ghuser/android_loup_ota.git" -b o
 
 export DEVICE=$1
 echo $DEVICE
+ls
 jq '.["./'$DEVICE'"] | .[-1] | .["filename"]' android_loup_ota/devices.json
 LATEST=$(jq '.["./'$DEVICE'"] | .[-1] | .["filename"]' android_loup_ota/devices.json)
 echo $LATEST #debug
