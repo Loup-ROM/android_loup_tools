@@ -1,10 +1,9 @@
 #!/bin/bash
 
 git clone "https://$ghuser:$ghpass@github.com/$ghuser/android_loup_ota.git" -b opendelta
-cd android_loup_ota
 
 DEVICE=$1
-LATEST=$(jq '.["./'$DEVICE'"] | .[-1] | .["filename"]' devices.json)
+LATEST=$(jq '.["./'$DEVICE'"] | .[-1] | .["filename"]' android_loup_ota/devices.json)
 echo $LATEST #debug
 export LATEST=$(echo "${LATEST//\"}")
 echo $LATEST # debug
