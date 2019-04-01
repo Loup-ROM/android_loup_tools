@@ -1,7 +1,6 @@
 #!/bin/bash
 export DEVICE=$1
-export LATEST=$2
-export LATEST=$(basename $LATEST)
+export LATEST=$(basename $2)
 
 cd android_loup_ota
 
