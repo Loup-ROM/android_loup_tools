@@ -51,7 +51,7 @@ fi
 # and stderrout
 #breakfast lineage_santoni-user 2>&1 | tee breakfast.log && \
 # brunch lineage_$1-user 2>&1 | tee make.log
-breakfast lineage_$1-user && make -j5 bacon 
+brunch lineage_$1-userdebug && make -j5 bacon 
 
 if [ $? -eq 0 ]
 then
