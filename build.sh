@@ -45,7 +45,7 @@ then
 fi
 # clean the out dir; comment out, if you want to do
 # a dirty build
-#make -j9 ARCH=arm clean
+make -j9 ARCH=arm clean
 
 # fire up the building process and also log stdout
 # and stderrout
